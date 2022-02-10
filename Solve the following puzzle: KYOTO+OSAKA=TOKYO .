@@ -1,0 +1,63 @@
+#include <iostream> 
+using namespace std; 
+int check_correctness(int a, int b, int c){ 
+char kyoto[] = {'o','t','o','y','k'}; 
+char osaka[] = {'a','k','a','s','o'}; 
+char tokyo[] = {'o','y','k','o','t'}; 
+int alpha[26]; 
+for (int i = 0; i < 26; i++) 
+{ 
+alpha[i] = -1; 
+} 
+int d1[5] = {0}, d2[5] = {0}, d3[6] = {0}, i = 0, j = 0, k = 0; 
+while (a!=0) 
+{ 
+d1[i] = (a%10); 
+a = a / 10; 
+i++; 
+} 
+while (b!=0) 
+{ 
+d2[j] = (b%10); 
+b = b / 10; 
+j++; 
+} 
+while (c!=0) 
+{ 
+d3[k] = (c%10); 
+c = c / 10; 
+k++; 
+} 
+for(int k = 0 ; k < 5 ; k++){ 
+alpha[kyoto[k] - 97] = d1[k]; 
+} 
+for(int k = 0 ; k < 5 ; k++){ 
+alpha[osaka[k] - 97] = d2[k]; 
+} 
+for(int k = 0 ; k < 6 ; k++){ 
+alpha[tokyo[k] - 97] = d3[k]; 
+} 
+for(int i = 0 ;i < 26 ;i++){ 
+int x = alpha[i]; 
+for(int j = 0 ; j < 26 ;j++){ 
+if (x != -1 && i!= j && x == alpha[j]) return 0; 
+} 
+} 
+return 1; 
+} 
+int main(){ 
+// KYOTO + OSAKA = TOKYO 
+for(int k = 0; k <= 9 ;k++){ 
+for(int y = 0; y <= 9 ;y++){ 
+for(int o = 0 ; o <= 9; o++){ 
+for(int t = 0 ; t <= 9 ; t++){ 
+for(int s = 0 ; s <= 9 ;s++){ 
+for(int a = 0 ; a <= 9; a++){ 
+if (k != 0 && o != 0 && t != 0){ 
+int kyoto = k * 10000 + y * 1000 + o * 100 + t * 10 + o; 
+int osaka = o * 10000 + s * 1000 + a * 100 + k * 10 + a; 
+int tokyo = t * 10000 + o * 1000 + k * 100 + y * 10 + o; 
+if (kyoto + osaka == tokyo){ 
+int ans = check_correctness(kyoto, osaka, tokyo); 
+if (ans == 1) printf("KYOTO = %d\nOSAKA = %d\nTOKYO = %d\n",kyoto, osaka, tokyo); 
+} } } } } } } } } 
