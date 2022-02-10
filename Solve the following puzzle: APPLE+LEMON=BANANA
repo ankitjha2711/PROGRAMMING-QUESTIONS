@@ -1,0 +1,64 @@
+#include <iostream> 
+using namespace std; 
+int check_correctness(int a, int b, int c){ 
+char apple[] = {'e','l','p','p','a'}; 
+char lemon[] = {'n','o','m','e','l'}; 
+char banana[] = {'a','n','a','n','a','b'}; 
+int alpha[26]; 
+for (int i = 0; i < 26; i++) 
+{ 
+alpha[i] = -1; 
+} 
+int d1[5] = {0}, d2[5] = {0}, d3[6] = {0}, i = 0, j = 0, k = 0; 
+while (a!=0) 
+{ 
+d1[i] = (a%10); 
+a = a / 10; 
+i++; 
+} 
+while (b!=0) 
+{ 
+d2[j] = (b%10); 
+b = b / 10; 
+j++; 
+} 
+while (c!=0) 
+{ 
+d3[k] = (c%10); 
+c = c / 10; 
+k++; 
+} 
+for(int k = 0 ; k < 5 ; k++){ 
+alpha[apple[k] - 97] = d1[k]; 
+} 
+for(int k = 0 ; k < 5 ; k++){ 
+alpha[lemon[k] - 97] = d2[k]; 
+} 
+for(int k = 0 ; k < 6 ; k++){ 
+alpha[banana[k] - 97] = d3[k]; 
+} 
+for(int i = 0 ;i < 26 ;i++){ 
+int x = alpha[i]; 
+for(int j = 0 ; j < 26 ;j++){ 
+if (x != -1 && i!= j && x == alpha[j]) return 0; 
+} 
+} 
+return 1; 
+} 
+int main(){ 
+// APPLE + LEMON = BANANA 
+for(int a = 0; a <= 9 ;a++){ 
+for(int p = 0; p <= 9 ;p++){ 
+for(int l = 0 ; l <= 9; l++){ 
+for(int e = 0 ; e <= 9 ; e++){ 
+for(int m = 0 ; m <= 9 ;m++){ 
+for(int o = 0 ; o <= 9; o++){ 
+for(int n = 0 ; n <= 9 ;n++){ 
+if (a != 0 && l != 0){ 
+int apple = a * 10000 + p * 1000 + p * 100 + l * 10 + e; 
+int lemon = l * 10000 + e * 1000 + m * 100 + o * 10 + n; 
+int banana = 1 * 100000 + a * 10000 + n * 1000 + a * 100 + n * 10 + a; 
+if (apple + lemon == banana){ 
+int ans = check_correctness(apple, lemon, banana); 
+if (ans == 1) printf("APPLE= %d\nLEMON = %d\nBANANA = %d\n",apple, lemon, banana); 
+} } } } } } } } } 
