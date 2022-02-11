@@ -1,0 +1,37 @@
+#include <iostream> 
+using namespace std; 
+int main(){ 
+int p,q,r; 
+cout<<"Enter the dimensions of matrix A: "<<" "; 
+cin>>p>>q; 
+cout<<"Enter the dimensions of matrix B: "<<" "; 
+cin>>q>>r; 
+int A[p][q], B[q][r], C[p][r]; 
+cout<<"Enter elements for matrix A: "<<endl; 
+for(int i = 0; i < p ;i++){ 
+for(int j = 0; j < q ;j++){ 
+cin>>A[i][j]; 
+} 
+} 
+cout<<"Enter elements for matrix B: "<<endl; 
+for(int i = 0; i < p ;i++){ 
+for(int j = 0; j < q ;j++){ 
+cin>>B[i][j]; 
+} 
+} 
+for(int i = 0; i < p; i++){ 
+for(int j = 0; j < q ;j++){ 
+C[i][j] = 0; 
+for(int k = 0; k < r ;k++){ 
+C[i][j] += A[i][j] * B[j][k]; 
+} 
+} 
+} 
+cout<<"After Multiplication, The elements for matrix C: "<<endl; 
+for(int i = 0; i < p ;i++){ 
+for(int j = 0; j < r ;j++){ 
+cout<<C[i][j]<<" "; 
+} 
+cout<<"\n"; 
+} 
+}
